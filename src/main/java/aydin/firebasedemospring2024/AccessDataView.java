@@ -1,4 +1,4 @@
-package aydin.firebasedemospring2024;
+package aydin.firebasedemo;
 
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanWrapper;

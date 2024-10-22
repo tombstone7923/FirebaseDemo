@@ -1,4 +1,4 @@
-module aydin.firebasedemospring2024 {
+module aydin.firebasedemo {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -14,6 +14,6 @@ module aydin.firebasedemospring2024 {
 
 
 
-    opens aydin.firebasedemospring2024 to javafx.fxml;
-    exports aydin.firebasedemospring2024;
+    opens aydin.firebasedemo to javafx.fxml;
+    exports aydin.firebasedemo;
 }

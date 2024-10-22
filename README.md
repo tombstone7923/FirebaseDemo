@@ -1,4 +1,4 @@
-# FirebaseDemoSpring2024
+# FirebaseDemo
 This app  has a rudimentary GUI but includes Java code examples on how to use a firestore database and email/password authentication in firebase in your IntelliJ project. The purpose of the sample app  is to add persons with name and age properties to a firestore collection called Persons and register users to the firebase project for email/password authentication.
 ## The GUI
 ![Screen Shot 2024-03-19 at 11 31 19 AM](https://github.com/aydini/FirebaseDemoSpring2024/assets/36745106/5b75556b-779b-4ecd-b69f-cee240740843)

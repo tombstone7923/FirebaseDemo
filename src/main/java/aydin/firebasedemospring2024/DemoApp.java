@@ -1,4 +1,4 @@
-package aydin.firebasedemospring2024;
+package aydin.firebasedemo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

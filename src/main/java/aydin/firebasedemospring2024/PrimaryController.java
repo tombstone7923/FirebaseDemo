@@ -1,4 +1,4 @@
-package aydin.firebasedemospring2024;
+package aydin.firebasedemo;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;

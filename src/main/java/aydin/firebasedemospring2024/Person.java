@@ -1,4 +1,4 @@
-package aydin.firebasedemospring2024;
+package aydin.firebasedemo;
 
 public class Person {
     private String name;

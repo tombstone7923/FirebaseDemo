@@ -60,9 +60,9 @@ public class welcomeController {
 
     }
 
-    public boolean signIn() {
+    //public boolean signIn() {
 
-    }
+    //}
 
     @FXML
     void registerButtonClicked(ActionEvent event) {

@@ -14,7 +14,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
             <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Register" />
-            <Button mnemonicParsing="false" text="Login" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Login" />
         </buttons>
       </ButtonBar>
     </children>

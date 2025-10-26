@@ -38,11 +38,18 @@ public class welcomeController {
 
     public boolean registerUser() {
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
-                .setEmail(emailTextField.getText())
+                /*.setEmail(emailTextField.getText())
                 .setEmailVerified(false)
                 .setPassword(passwordTextField.getText())
                 .setPhoneNumber(phoneNumberTextField.getText())
                 .setDisplayName(usernameTextField.getText())
+                .setDisabled(false);*/
+
+                .setEmail("user222@example.com")
+                .setEmailVerified(false)
+                .setPassword("secretPassword")
+                .setPhoneNumber("+11234567890")
+                .setDisplayName("John Doe")
                 .setDisabled(false);
 
         UserRecord userRecord;
@@ -60,13 +67,19 @@ public class welcomeController {
 
     }
 
-    //public boolean signIn() {
-
-    //}
+    public void signIn() {
+        //UserRecord userRecordLogin = DemoApp.fauth.getUser(emailTextField.getText());
+        //System.out.println(userRecordLogin.toString());
+    }
 
     @FXML
     void registerButtonClicked(ActionEvent event) {
         registerUser();
+    }
+
+    @FXML
+    void loginButtonClicked(ActionEvent event) {
+        signIn();
     }
 
 }

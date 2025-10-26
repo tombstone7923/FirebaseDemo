@@ -65,10 +65,10 @@ public class PrimaryController {
         readFirebase();
     }
 
-    @FXML
+    /*@FXML
     void registerButtonClicked(ActionEvent event) {
         registerUser();
-    }
+    }*/
 
 
     @FXML
@@ -119,7 +119,7 @@ public class PrimaryController {
         return key;
     }
 
-    public boolean registerUser() {
+    /*public boolean registerUser() {
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail("user222@example.com")
                 .setEmailVerified(false)
@@ -141,7 +141,7 @@ public class PrimaryController {
             return false;
         }
 
-    }
+    }*/
 
     public void addData() {
 

@@ -38,18 +38,11 @@ public class welcomeController {
 
     public boolean registerUser() {
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
-                /*.setEmail(emailTextField.getText())
+                .setEmail(emailTextField.getText())
                 .setEmailVerified(false)
                 .setPassword(passwordTextField.getText())
                 .setPhoneNumber(phoneNumberTextField.getText())
-                .setDisplayName(usernameTextField.getText())
-                .setDisabled(false);*/
-
-                .setEmail("user222@example.com")
-                .setEmailVerified(false)
-                .setPassword("secretPassword")
-                .setPhoneNumber("+11234567890")
-                .setDisplayName("John Doe")
+                .setUid(usernameTextField.getText())
                 .setDisabled(false);
 
         UserRecord userRecord;
@@ -68,8 +61,17 @@ public class welcomeController {
     }
 
     public void signIn() {
-        //UserRecord userRecordLogin = DemoApp.fauth.getUser(emailTextField.getText());
-        //System.out.println(userRecordLogin.toString());
+        UserRecord userRecordLogin = null;
+        try {
+            userRecordLogin = DemoApp.fauth.getUser(usernameTextField.getText());
+            switchToSecondary();
+        } catch (FirebaseAuthException e) {
+            System.out.println("firebase error");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("io error");
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -80,6 +82,11 @@ public class welcomeController {
     @FXML
     void loginButtonClicked(ActionEvent event) {
         signIn();
+    }
+
+    @FXML
+    private void switchToSecondary() throws IOException {
+        DemoApp.setRoot("secondary");
     }
 
 }

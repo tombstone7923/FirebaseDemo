@@ -8,15 +8,13 @@
     <children>
         <Label text="Welcome" />
       <TextField fx:id="emailTextField" promptText="Email" />
-      <TextField fx:id="phoneNumberTextField" promptText="Phone Number" />
+      <TextField fx:id="phoneNumberTextField" promptText="Phone Number" text="+1" />
       <TextField fx:id="usernameTextField" promptText="Username" />
       <TextField fx:id="passwordTextField" promptText="Password" />
-      <ButtonBar prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-            <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Register" />
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Login" />
-        </buttons>
-      </ButtonBar>
+      <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Register" />
+      <TextField fx:id="usernameLoginTextField" promptText="Username" />
+      <TextField fx:id="passwordLoginTextField" promptText="Password" />
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Login" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

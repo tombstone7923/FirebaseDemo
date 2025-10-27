@@ -30,6 +30,9 @@ public class PrimaryController {
     private TextField nameTextField;
 
     @FXML
+    private TextField phoneTextField;
+
+    @FXML
     private TextArea outputTextArea;
 
     @FXML
@@ -98,7 +101,7 @@ public class PrimaryController {
                 for (QueryDocumentSnapshot document : documents)
                 {
                     outputTextArea.setText(outputTextArea.getText()+ document.getData().get("Name")+ " , Age: "+
-                            document.getData().get("Age")+ " \n ");
+                            document.getData().get("Age")+ " , Phone Number:  "+ document.getData().get("Phone Number") + " \n ");
                     System.out.println(document.getId() + " => " + document.getData().get("Name"));
                     person  = new Person(String.valueOf(document.getData().get("Name")),
                             Integer.parseInt(document.getData().get("Age").toString()));
@@ -150,6 +153,7 @@ public class PrimaryController {
         Map<String, Object> data = new HashMap<>();
         data.put("Name", nameTextField.getText());
         data.put("Age", Integer.parseInt(ageTextField.getText()));
+        data.put("Phone Number", Integer.parseInt(phoneTextField.getText()));
 
         //asynchronously write data
         ApiFuture<WriteResult> result = docRef.set(data);

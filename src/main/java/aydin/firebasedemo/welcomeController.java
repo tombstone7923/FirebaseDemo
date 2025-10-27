@@ -109,7 +109,7 @@ public class welcomeController {
                     }
                     if(passwordMatch == true && userMatch == true){
                         try {
-                            DemoApp.setRoot("secondary");
+                            DemoApp.setRoot("primary");
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -136,11 +136,6 @@ public class welcomeController {
     @FXML
     void loginButtonClicked(ActionEvent event) {
         signIn();
-    }
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        DemoApp.setRoot("secondary");
     }
 
 }

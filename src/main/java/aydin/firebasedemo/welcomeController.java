@@ -36,6 +36,23 @@ public class welcomeController {
     @FXML
     private TextField phoneNumberTextField;
 
+    @FXML
+    private TextField usernameLoginTextField;
+
+    @FXML
+    private TextField passwordLoginTextField;
+
+    public void addData() {
+
+        DocumentReference docRef = DemoApp.fstore.collection("Passwords").document(usernameTextField.getText());
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("Password", passwordTextField.getText());
+
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
+    }
+
     public boolean registerUser() {
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail(emailTextField.getText())
@@ -45,11 +62,14 @@ public class welcomeController {
                 .setUid(usernameTextField.getText())
                 .setDisabled(false);
 
+
+
         UserRecord userRecord;
         try {
             userRecord = DemoApp.fauth.createUser(request);
             System.out.println("Successfully created new user with Firebase Uid: " + userRecord.getUid()
                     + " check Firebase > Authentication > Users tab");
+            addData();
             return true;
 
         } catch (FirebaseAuthException ex) {
@@ -61,16 +81,50 @@ public class welcomeController {
     }
 
     public void signIn() {
-        UserRecord userRecordLogin = null;
-        try {
-            userRecordLogin = DemoApp.fauth.getUser(usernameTextField.getText());
-            switchToSecondary();
-        } catch (FirebaseAuthException e) {
-            System.out.println("firebase error");
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            System.out.println("io error");
-            throw new RuntimeException(e);
+        ApiFuture<QuerySnapshot> future =  DemoApp.fstore.collection("Passwords").get();
+        List<QueryDocumentSnapshot> documents;
+        boolean passwordMatch = false;
+        boolean userMatch = false;
+        try
+        {
+            documents = future.get().getDocuments();
+            if(documents.size()>0)
+            {
+                System.out.println("Getting (reading) data from firabase database....");
+
+                for (QueryDocumentSnapshot document : documents) {
+                    if (document.getData().get("Password").equals(passwordLoginTextField.getText())) {
+                        System.out.println(document.getData().get("Password"));
+                        passwordMatch = true;
+                    }
+                    else{
+                        System.out.println("password wrong");
+                    }
+                    if(document.getId().equals(usernameLoginTextField.getText())){
+                        System.out.println(document.getId());
+                        userMatch = true;
+                    }
+                    else{
+                        System.out.println("username wrong");
+                    }
+                    if(passwordMatch == true && userMatch == true){
+                        try {
+                            DemoApp.setRoot("secondary");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                System.out.println("No data");
+            }
+
+        }
+        catch (InterruptedException | ExecutionException ex)
+        {
+            ex.printStackTrace();
         }
     }
 
